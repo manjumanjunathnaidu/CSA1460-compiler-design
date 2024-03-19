@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int words = 0, lines = 0, characters = 0;
+
+    printf("Enter text (up to 100 characters, use ~ to end):\n");
+    scanf("%[^~]", str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == ' ' || str[i] == '\t') {
+            words++;
+        } else if (str[i] == '\n') {
+            lines++;
+        } else {
+            characters++;
+        }
+    }
+
+    // Check for an empty input
+    if (characters > 0) {
+        words++; // If there are characters, there is at least one word
+        lines++; // If there are characters, there is at least one line
+    }
+
+    printf("Total number of words: %d\n", words);
+    printf("Total number of lines: %d\n", lines);
+    printf("Total number of characters: %d\n", characters);
+
+    return 0;
+}
+
+Output:
+void main()
+{
+int a;
+int b;
+a = b + c;
+c = d * e;
+}
+Total number of words : 12
+Total number of lines : 7
+Total number of Character: 34
+
+Exp. No. 6                            
+Develop a lexical Analyzer to test whether a given identifier is valid or not using C.
+
+Program:
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char a[10];
+    int flag = 1, i = 1;
+
+    printf("\nEnter an identifier: ");
+    fgets(a, sizeof(a), stdin);
+
+    if (isalpha(a[0])) {
+        while (a[i] != '\0') {
+            if (!isdigit(a[i]) && !isalpha(a[i])) {
+                flag = 0;
+                break;
+            }
+            i++;
+        }
+    } else {
+        flag = 0;
+    }
+
+    if (flag == 1) {
+        printf("\nValid identifier\n");
+    } else {
+        printf("\nNot a valid identifier\n");
+    }
+
+    return 0;
+}
+
